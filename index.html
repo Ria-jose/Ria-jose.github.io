@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pip — Junior Dream Engineer | Baby's First Website</title>
-  <!-- Google Fonts: Editorial Serif (Fraunces) + Bubbly Display (Fredoka) -->
+  <title> Pip </title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
-  <!-- Canvas Confetti for Easter Egg -->
+  
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
   <style>
     :root {
-      /* Official haX.baby Warm Cream & Berry Palette */
+  
       --bg-primary: #fff8f1;
       --bg-card: #ffffff;
       --text-main: #5c4033;
@@ -25,7 +25,7 @@
     }
 
     [data-theme="dream"] {
-      /* Cozy Midnight Nursery Palette */
+    
       --bg-primary: #1a162b;
       --bg-card: #26203d;
       --text-main: #fff8f1;
@@ -51,7 +51,7 @@
       line-height: 1.2;
     }
 
-    /* Sticky Early-Web Top Bar */
+
     .topbar {
       position: sticky;
       top: 12px;
@@ -227,7 +227,6 @@
     }
     .synth-key:active { background: var(--accent-amber); transform: translateY(2px); }
 
-    /* Story Scroll Timeline */
     .story-scene {
       background: var(--bg-card);
       border: 2.5px solid var(--text-main);
@@ -263,7 +262,6 @@
     body.chaos-mode .card:nth-child(even) { transform: rotate(2.5deg); }
     body.chaos-mode .hero { border-style: dashed; transform: rotate(-0.8deg); }
 
-    /* Sparkle Trail Particle */
     .sparkle {
       position: fixed;
       pointer-events: none;
@@ -284,39 +282,39 @@
 </head>
 <body>
 
-  <!-- Sticky Navigation & Side-Quest Controls -->
+
   <header class="topbar">
     <div class="badge-title">
-      <span>🍼 Pip's Midnight Nursery</span>
+      <span> Welcome to the Midnight Nursery</span>
     </div>
     <div class="controls">
       <button id="muteBtn" class="btn" aria-pressed="false" title="Required Accessible Mute Toggle">
         🔊 Sound: ON
       </button>
       <button id="themeBtn" class="btn">
-        🌙 Dream Mode
+        Dream Mode
       </button>
       <button id="chaosBtn" class="btn btn-berry">
-        ✨ Chaos Mode
+        Chaos Mode
       </button>
     </div>
   </header>
 
   <main class="container">
-    <!-- 1. WHAT THEY ARE (Hero + Character Intro) -->
+
     <section class="hero">
-      <span id="easterEggStar" class="secret-star" title="Hmm, this star twinkles strangely... (Click 3x)">⭐</span>
+      <span id="easterEggStar" class="secret-star" title="Hmm, does this star twinkle strangely... (Click on it 3 times ;>)">⭐</span>
       <div>
-        <p style="color: var(--accent-berry); font-weight: 700; letter-spacing: 0.5px;">MEET THE BABY · TRACK 1</p>
+        <p style="color: var(--accent-berry); font-weight: 700; letter-spacing: 0.5px;">ABOUT THE BABY</p>
         <h1 style="font-size: clamp(2rem, 4vw, 3rem); margin: 8px 0 14px;">
-          Hi, I'm Pip! <br/>Junior Dream Engineer.
+          Hi, I'm Pip! <br/> I'm a Junior Dream Engineer.
         </h1>
         <p style="margin-bottom: 16px;">
-          I'm a sleepy little skull baby with warm amber pinprick eyes, a crooked bedtime smile, and a star-pinned nightcap. While the world sleeps, I craft soothing lullabies, glowing bedside lanterns, and rooftop dream deliveries!
+          I'm a skull baby with warm amber pinprick eyes. I craft soothing lullabies, glowing bedside lanterns, and rooftop dream deliveries so my ghost friends can sleep better.
         </p>
         <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-          <span class="btn" style="cursor: default;">🦴 Species: Cozy Skull Baby</span>
-          <span class="btn" style="cursor: default;">🍼 Fav Drink: Warm Chamomile Milk</span>
+          <span class="btn" style="cursor: default;"> Species: Skull Baby</span>
+          <span class="btn" style="cursor: default;"> Fav Drink: Hot Chocolate</span>
         </div>
       </div>
 
@@ -324,23 +322,21 @@
         <img src="https://hax.baby/baby/assets/pip_avatar_cloud.png" alt="Pip the Skull Baby floating on a cloud" class="avatar-img" />
         <div class="eye-tracker-pill" aria-label="Pip's glowing amber eyes following your cursor">
           <div class="socket"><div class="pupil"></div></div>
-          <span>Pip's Amber Gaze</span>
+          <span>Pip's eyes will follow you through this site. </span>
           <div class="socket"><div class="pupil"></div></div>
         </div>
       </div>
     </section>
-
-    <!-- 2. WHAT THEY DO (3 Interactive Showcase Projects) -->
     <section>
-      <h2 style="font-size: 2rem; margin-bottom: 6px;">🛠️ Pip's Nursery Inventions</h2>
-      <p style="color: var(--text-muted);">Click and play with the creations from my Midnight Nursery workbench:</p>
+      <h2 style="font-size: 2rem; margin-bottom: 6px;">Pip's Nursery Inventions</h2>
+      <p style="color: var(--text-muted);">Click and play with the creations from my workbench:</p>
 
       <div class="grid-3">
         <!-- Project 1: The Lullaby Lab -->
         <article class="card">
           <div>
             <img src="https://hax.baby/baby/assets/pip_lullaby_box.png" alt="Pip's Lullaby Music Box" />
-            <h3>1. The Lullaby Lab</h3>
+            <h3> The Lullaby Lab</h3>
             <p style="font-size: 0.92rem; color: var(--text-muted); margin-top: 6px;">
               A hand-cranked celestial music box. Tap the chimes below to play a soothing pentatonic bedtime melody!
             </p>
@@ -358,7 +354,7 @@
         <article class="card">
           <div>
             <img id="lanternImg" src="https://hax.baby/baby/assets/pip_dream_lantern.png" alt="Pip's Dream Nightlight Lantern" style="transition: filter 0.3s ease;" />
-            <h3>2. Nightlight Lantern</h3>
+            <h3> Nightlight Lantern</h3>
             <p style="font-size: 0.92rem; color: var(--text-muted); margin-top: 6px;">
               Bottled starlight calibrated to chase away under-the-bed shadows. Slide to adjust the amber warmth!
             </p>
@@ -373,43 +369,37 @@
         <article class="card">
           <div>
             <img src="https://hax.baby/baby/assets/pip_portrait.png" alt="Pip Portrait" />
-            <h3>3. Rooftop Dream Radar</h3>
+            <h3> Rooftop Dream Radar</h3>
             <p style="font-size: 0.92rem; color: var(--text-muted); margin-top: 6px;">
               My cloud-glider navigation map for dropping sweet dreams down neighborhood chimneys before midnight.
             </p>
           </div>
           <button id="deliverDreamBtn" class="btn btn-berry" style="margin-top: 12px; width: 100%;">
-            ☁️ Dispatch 1 Cozy Dream
+             Dispatch a Cozy Dream
           </button>
         </article>
       </div>
     </section>
 
-    <!-- 3. WHAT THEIR STORY IS (Scroll-Driven Scenes < 150 words each) -->
     <section style="margin-bottom: 48px;">
-      <h2 style="font-size: 2rem; margin-bottom: 16px;">📖 Pip's Bedtime Journey</h2>
+      <h2 style="font-size: 2rem; margin-bottom: 16px;"> My Journey</h2>
       <div class="story-scene">
-        <h3>Scene I · 8:00 PM — Clocking In at the Cloud Crib</h3>
-        <p>When the sun dips below the rooftops and the first cricket chirps, Pip wakes up with a tiny yawn, ties the pink ribbon on his starry nightcap, and polishes his amber eyes.</p>
+        <p>When the sun dips below the rooftops and the first cricket chirps, I wake up with a yawn and polish my amber eyes. Every evening I turn on my music box before going to the kitchen to drink a hot chocolate.
+        Then it's time for mama to give me a bath. Next, I go down to my workshop and fill my dream jars. After filling all the jars for the night, I teleport to chimneys and deliver the dreams. 
+          At dawn, I go back home for my morning nap.
+        </p>
       </div>
-      <div class="story-scene">
-        <h3>Scene II · 10:30 PM — Winding the Lullaby Gears</h3>
-        <p>Inside the Midnight Nursery workshop, Pip tunes brass music boxes and fills glass lanterns with warm golden stardust so no little creature has to sleep in the dark.</p>
-      </div>
-      <div class="story-scene">
-        <h3>Scene III · 11:59 PM — The Rooftop Cloud Glide</h3>
-        <p>Floating gently on his cumulus cruiser, Pip drifts over quiet chimneys, sprinkling cozy dreams of marshmallow castles before curling up for his own morning nap.</p>
-      </div>
+      
     </section>
 
-    <!-- BONUS SIDE QUEST: Live Nursery Guestbook (+2 pts) -->
+  
     <section class="card" style="margin-bottom: 40px;">
-      <h3>💌 Sign Pip's Bedtime Guestbook</h3>
+      <h3> Sign my Bedtime Guestbook</h3>
       <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 12px;">Leave a cozy bedtime wish on the nursery wall:</p>
       <form id="guestbookForm" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;">
         <input id="guestName" type="text" placeholder="Your name..." required style="padding: 8px 12px; border: 2px solid var(--text-main); border-radius: 10px; font-family: inherit;" />
         <input id="guestWish" type="text" placeholder="Leave a dream wish..." required style="flex: 1; padding: 8px 12px; border: 2px solid var(--text-main); border-radius: 10px; font-family: inherit;" />
-        <button type="submit" class="btn btn-berry">Pin Wish 📌</button>
+        <button type="submit" class="btn btn-berry">Pin Wish</button>
       </form>
       <div id="guestbookList" style="display: grid; gap: 8px;"></div>
     </section>
@@ -417,17 +407,14 @@
     <!-- BONUS SIDE QUEST: Hit Counter Odometer (+1 pt) -->
     <footer style="text-align: center; padding: 20px 0; border-top: 2px dashed var(--border-color);">
       <p style="margin-bottom: 8px; font-weight: 600;">Total Cozy Dreams Delivered Tonight:</p>
-      <div id="odometer" class="odometer">001204</div>
+      <div id="odometer" class="odometer">001111</div>
       <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 12px;">
-        Built with early-web soul for haX.baby "Baby's First Website" Hackathon (Oct 17–19, 2026)
       </p>
     </footer>
   </main>
 
   <script>
-    /* ==========================================================
-       1. WEB AUDIO API SYNTHESIZER + REQUIRED MUTE TOGGLE (+3 PTS)
-       ========================================================== */
+
     let isMuted = false;
     let audioCtx = null;
 
@@ -476,9 +463,6 @@
       });
     });
 
-    /* ==========================================================
-       2. INTERACTIVE EYE-TRACKING + SPARKLE CURSOR TRAIL (+2 PTS)
-       ========================================================== */
     const pupils = document.querySelectorAll('.pupil');
     let lastSparkleTime = 0;
 
@@ -509,9 +493,6 @@
       }
     });
 
-    /* ==========================================================
-       3. DAY / DREAM THEME TOGGLE & CHAOS MODE (+5 PTS)
-       ========================================================== */
     const themeBtn = document.getElementById('themeBtn');
     themeBtn.addEventListener('click', () => {
       const html = document.documentElement;
@@ -533,14 +514,11 @@
         [523.25, 659.25, 783.99, 1046.5].forEach((f, idx) => {
           setTimeout(() => playChime(f, 0.4), idx * 120);
         });
-        alert("🌟 SECRET UNLOCKED: You found Pip's Golden Midnight Rattle! Sweet dreams forever!");
+        alert(" SECRET UNLOCKED: You found Pip's Golden Midnight Rattle! Sweet dreams forever!");
         starClicks = 0;
       }
     });
 
-    /* ==========================================================
-       5. LANTERN SLIDER, ODOMETER (+1 PT), SCROLL SCENES & GUESTBOOK
-       ========================================================== */
     const glowSlider = document.getElementById('glowSlider');
     const lanternImg = document.getElementById('lanternImg');
     glowSlider.addEventListener('input', (e) => {
