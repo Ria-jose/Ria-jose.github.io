@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="day">
+<html lang="en" data-theme="halloween">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> Pip </title>
+  <title>Midnight Nursery</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,32 +13,43 @@
 
   <style>
     :root {
-  
-      --bg-primary: #fff8f1;
-      --bg-card: #ffffff;
-      --text-main: #5c4033;
-      --text-muted: #8a6d5f;
-      --accent-berry: #a34063;
-      --accent-amber: #ffb84d;
-      --border-color: #e6d5c3;
-      --shadow-retro: 4px 4px 0px #5c4033;
+
+      --bg-primary: #0f0a19;
+      --bg-card: #1b132b;
+      --bg-inset: #130d20;
+      --text-main: #fdf4e3;
+      --text-muted: #bba8d6;
+      --accent-berry: #ff7518; /* Pumpkin Spice Orange */
+      --accent-amber: #ffbe0b; /* Candlelight Gold */
+      --accent-witch: #9d4edd; 
+      --border-color: #4a3570;
+      --shadow-retro: 4px 4px 0px #06030a;
+      --glow-card: 0 0 24px rgba(255, 117, 24, 0.12);
     }
 
-    [data-theme="dream"] {
-    
-      --bg-primary: #1a162b;
-      --bg-card: #26203d;
-      --text-main: #fff8f1;
-      --text-muted: #c4b6e0;
-      --accent-berry: #ff85a2;
-      --accent-amber: #ffd166;
-      --border-color: #463b69;
-      --shadow-retro: 4px 4px 0px #0d0a18;
+    [data-theme="witching"] {
+      /* Alternate Mode: Spectral Ghost-Lantern Mode */
+      --bg-primary: #070913;
+      --bg-card: #111629;
+      --bg-inset: #0b0e1b;
+      --text-main: #e8f7ff;
+      --text-muted: #93a8c9;
+      --accent-berry: #a855f7; /* Spectral Purple */
+      --accent-amber: #5eead4; /* Friendly Ghost Mint-Glow */
+      --accent-witch: #f97316;
+      --border-color: #313d66;
+      --shadow-retro: 4px 4px 0px #020308;
+      --glow-card: 0 0 26px rgba(94, 234, 212, 0.14);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       background-color: var(--bg-primary);
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(157, 78, 221, 0.14) 0%, transparent 35%),
+        radial-gradient(circle at 85% 75%, rgba(255, 117, 24, 0.12) 0%, transparent 40%),
+        radial-gradient(var(--border-color) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 28px 28px;
       color: var(--text-main);
       font-family: 'Fredoka', sans-serif;
       line-height: 1.6;
@@ -51,6 +62,21 @@
       line-height: 1.2;
     }
 
+    .cobweb-corner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 110px;
+      height: 110px;
+      pointer-events: none;
+      opacity: 0.25;
+      z-index: 50;
+    }
+    .cobweb-right {
+      left: auto;
+      right: 0;
+      transform: scaleX(-1);
+    }
 
     .topbar {
       position: sticky;
@@ -60,9 +86,9 @@
       margin: 12px auto;
       padding: 10px 18px;
       background: var(--bg-card);
-      border: 2.5px solid var(--text-main);
+      border: 2.5px solid var(--border-color);
       border-radius: 999px;
-      box-shadow: var(--shadow-retro);
+      box-shadow: var(--shadow-retro), var(--glow-card);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -76,6 +102,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      letter-spacing: 0.3px;
     }
 
     .controls {
@@ -90,20 +117,28 @@
       font-size: 0.9rem;
       padding: 8px 14px;
       border-radius: 999px;
-      border: 2px solid var(--text-main);
-      background: var(--bg-primary);
+      border: 2px solid var(--border-color);
+      background: var(--bg-inset);
       color: var(--text-main);
-      box-shadow: 2px 2px 0px var(--text-main);
+      box-shadow: 2px 2px 0px #06030a;
       cursor: pointer;
-      transition: transform 0.1s ease, box-shadow 0.1s ease;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, border-color 0.2s ease;
     }
-    .btn:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0px var(--text-main); }
-    .btn:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0px var(--text-main); }
-    .btn-berry { background: var(--accent-berry); color: #fff; }
+    .btn:hover {
+      transform: translate(-1px, -1px);
+      border-color: var(--accent-amber);
+      box-shadow: 3px 3px 0px #06030a;
+    }
+    .btn:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0px #06030a; }
+    .btn-berry {
+      background: var(--accent-berry);
+      color: #0f0a19;
+      border-color: var(--accent-amber);
+      font-weight: 700;
+    }
 
     .container { max-width: 960px; margin: 0 auto; padding: 24px 16px; }
 
-    /* Hero Section */
     .hero {
       display: grid;
       grid-template-columns: 1.2fr 1fr;
@@ -111,9 +146,9 @@
       align-items: center;
       padding: 36px;
       background: var(--bg-card);
-      border: 3px solid var(--text-main);
+      border: 3px solid var(--border-color);
       border-radius: 28px;
-      box-shadow: var(--shadow-retro);
+      box-shadow: var(--shadow-retro), var(--glow-card);
       margin-bottom: 40px;
       position: relative;
     }
@@ -129,6 +164,7 @@
       width: 100%;
       max-width: 280px;
       border-radius: 20px;
+      filter: drop-shadow(0 0 18px rgba(255, 117, 24, 0.35));
       animation: floatCloud 4s ease-in-out infinite;
     }
 
@@ -137,49 +173,49 @@
       50% { transform: translateY(-10px); }
     }
 
-    /* Interactive Eye-Tracking Widget */
+  
     .eye-tracker-pill {
       margin-top: 12px;
       padding: 6px 14px;
-      background: #1a162b;
-      border: 2px solid var(--text-main);
+      background: #08050f;
+      border: 2px solid var(--accent-berry);
       border-radius: 999px;
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      color: #fff8f1;
+      color: var(--text-main);
       font-size: 0.8rem;
+      box-shadow: 0 0 12px rgba(255, 117, 24, 0.25);
     }
     .socket {
       width: 22px; height: 22px;
-      background: #0d0a18;
+      background: #040208;
       border-radius: 50%;
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1.5px solid #5c4033;
+      border: 1.5px solid var(--accent-berry);
     }
     .pupil {
       width: 8px; height: 8px;
       background: var(--accent-amber);
       border-radius: 50%;
-      box-shadow: 0 0 8px var(--accent-amber);
+      box-shadow: 0 0 10px var(--accent-amber);
       transition: transform 0.05s linear;
     }
 
-    /* Hidden Easter Egg Star */
     .secret-star {
       position: absolute;
       top: 16px; right: 20px;
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       cursor: pointer;
       user-select: none;
+      filter: drop-shadow(0 0 8px var(--accent-berry));
       transition: transform 0.2s ease;
     }
     .secret-star:hover { transform: scale(1.25) rotate(15deg); }
 
-    /* Grid for 3 Showcase Projects */
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -189,27 +225,30 @@
 
     .card {
       background: var(--bg-card);
-      border: 2.5px solid var(--text-main);
+      border: 2.5px solid var(--border-color);
       border-radius: 22px;
       padding: 22px;
-      box-shadow: var(--shadow-retro);
+      box-shadow: var(--shadow-retro), var(--glow-card);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.25s ease;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+    .card:hover {
+      border-color: var(--accent-berry);
+      transform: translateY(-3px);
     }
     .card img {
       width: 100%;
       height: 170px;
       object-fit: contain;
-      background: var(--bg-primary);
+      background: var(--bg-inset);
       border-radius: 14px;
       border: 2px dashed var(--border-color);
       padding: 8px;
       margin-bottom: 14px;
     }
 
-    /* Lullaby Synth Keys */
     .synth-keys {
       display: flex;
       gap: 6px;
@@ -218,22 +257,30 @@
     .synth-key {
       flex: 1;
       padding: 10px 0;
-      border: 2px solid var(--text-main);
+      border: 2px solid var(--border-color);
       border-radius: 10px;
-      background: var(--bg-primary);
+      background: var(--bg-inset);
       font-weight: 700;
       cursor: pointer;
-      color: var(--text-main);
+      color: var(--accent-amber);
+      transition: background 0.15s ease, transform 0.1s ease;
     }
-    .synth-key:active { background: var(--accent-amber); transform: translateY(2px); }
+    .synth-key:hover { border-color: var(--accent-berry); }
+    .synth-key:active {
+      background: var(--accent-berry);
+      color: #0f0a19;
+      transform: translateY(2px);
+    }
+
 
     .story-scene {
       background: var(--bg-card);
-      border: 2.5px solid var(--text-main);
+      border: 2.5px solid var(--border-color);
+      border-left: 6px solid var(--accent-berry);
       border-radius: 20px;
       padding: 24px;
       margin-bottom: 20px;
-      box-shadow: var(--shadow-retro);
+      box-shadow: var(--shadow-retro), var(--glow-card);
       opacity: 0;
       transform: translateY(24px);
       transition: opacity 0.6s ease, transform 0.6s ease;
@@ -243,35 +290,48 @@
       transform: translateY(0);
     }
 
+    /* Form Inputs */
+    .spooky-input {
+      padding: 10px 14px;
+      border: 2px solid var(--border-color);
+      border-radius: 10px;
+      background: var(--bg-inset);
+      color: var(--text-main);
+      font-family: inherit;
+    }
+    .spooky-input::placeholder { color: var(--text-muted); opacity: 0.75; }
+    .spooky-input:focus { outline: none; border-color: var(--accent-amber); }
+
     /* Vintage Odometer Footer */
     .odometer {
       display: inline-flex;
       gap: 4px;
-      background: #1a162b;
-      padding: 6px 10px;
-      border-radius: 8px;
-      border: 2px solid var(--text-main);
+      background: #07040d;
+      padding: 8px 14px;
+      border-radius: 10px;
+      border: 2px solid var(--accent-berry);
       color: var(--accent-amber);
       font-family: monospace;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: 700;
+      box-shadow: 0 0 14px rgba(255, 117, 24, 0.25);
     }
 
     /* Responsive Chaos Mode (+5 pts Side Quest) */
-    body.chaos-mode .card:nth-child(odd) { transform: rotate(-2deg); }
-    body.chaos-mode .card:nth-child(even) { transform: rotate(2.5deg); }
+    body.chaos-mode .card:nth-child(odd) { transform: rotate(-2.2deg); border-color: var(--accent-amber); }
+    body.chaos-mode .card:nth-child(even) { transform: rotate(2.5deg); border-color: var(--accent-berry); }
     body.chaos-mode .hero { border-style: dashed; transform: rotate(-0.8deg); }
 
     .sparkle {
       position: fixed;
       pointer-events: none;
       z-index: 9999;
-      font-size: 14px;
-      animation: fadeSparkle 0.7s forwards ease-out;
+      font-size: 15px;
+      animation: fadeSparkle 0.75s forwards ease-out;
     }
     @keyframes fadeSparkle {
       0% { opacity: 1; transform: scale(1) translateY(0); }
-      100% { opacity: 0; transform: scale(0.3) translateY(18px); }
+      100% { opacity: 0; transform: scale(0.3) translateY(20px); }
     }
 
     @media (max-width: 768px) {
@@ -283,6 +343,15 @@
 <body>
 
 
+  <svg class="cobweb-corner" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+    <path d="M0 0 L100 0 M0 0 L0 100 M0 0 L75 75 M0 0 L95 35 M0 0 L35 95" stroke-width="1.5"/>
+    <path d="M25 0 Q22 22 0 25 M50 0 Q42 42 0 50 M75 0 Q62 62 0 75" stroke-width="1.5"/>
+  </svg>
+  <svg class="cobweb-corner cobweb-right" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+    <path d="M0 0 L100 0 M0 0 L0 100 M0 0 L75 75 M0 0 L95 35 M0 0 L35 95" stroke-width="1.5"/>
+    <path d="M25 0 Q22 22 0 25 M50 0 Q42 42 0 50 M75 0 Q62 62 0 75" stroke-width="1.5"/>
+  </svg>
+
   <header class="topbar">
     <div class="badge-title">
       <span> Welcome to the Midnight Nursery</span>
@@ -292,10 +361,10 @@
         🔊 Sound: ON
       </button>
       <button id="themeBtn" class="btn">
-        Dream Mode
+         Witching Hour
       </button>
       <button id="chaosBtn" class="btn btn-berry">
-        Chaos Mode
+         Trick-or-Treat Chaos
       </button>
     </div>
   </header>
@@ -303,18 +372,18 @@
   <main class="container">
 
     <section class="hero">
-      <span id="easterEggStar" class="secret-star" title="Hmm, does this star twinkle strangely... (Click on it 3 times ;>)">⭐</span>
+      <span id="easterEggStar" class="secret-star" title="Hmm, this little pumpkin glows strangely... (Click on it 3 times ;>)">🎃</span>
       <div>
-        <p style="color: var(--accent-berry); font-weight: 700; letter-spacing: 0.5px;">ABOUT THE BABY</p>
+        <p style="color: var(--accent-berry); font-weight: 700; letter-spacing: 0.8px;"> MIDNIGHT SHIFT · ABOUT THE BABY</p>
         <h1 style="font-size: clamp(2rem, 4vw, 3rem); margin: 8px 0 14px;">
-          Hi, I'm Pip! <br/> I'm a Junior Dream Engineer.
+          Hi, I'm Pip! <br/>I'm a Junior Dream Engineer.
         </h1>
-        <p style="margin-bottom: 16px;">
-          I'm a skull baby with warm amber pinprick eyes. I craft soothing lullabies, glowing bedside lanterns, and rooftop dream deliveries so my ghost friends can sleep better.
+        <p style="margin-bottom: 16px; color: var(--text-muted);">
+          I'm a friendly little skull baby with glowing amber eyes. Every All Hallows' Eve, I craft cozy music-box lullabies, spooky-proof bedside lanterns, and rooftop dream deliveries so my little ghost and bat friends can sleep tight!
         </p>
         <div style="display: flex; gap: 10px; flex-wrap: wrap;">
           <span class="btn" style="cursor: default;"> Species: Skull Baby</span>
-          <span class="btn" style="cursor: default;"> Fav Drink: Hot Chocolate</span>
+          <span class="btn" style="cursor: default;"> Fav Drink: Pumpkin Spice Hot Cocoa</span>
         </div>
       </div>
 
@@ -322,46 +391,47 @@
         <img src="https://hax.baby/baby/assets/pip_avatar_cloud.png" alt="Pip the Skull Baby floating on a cloud" class="avatar-img" />
         <div class="eye-tracker-pill" aria-label="Pip's glowing amber eyes following your cursor">
           <div class="socket"><div class="pupil"></div></div>
-          <span>Pip's eyes will follow you through this site. </span>
+          <span>Pip's lantern eyes follow you</span>
           <div class="socket"><div class="pupil"></div></div>
         </div>
       </div>
     </section>
+
     <section>
-      <h2 style="font-size: 2rem; margin-bottom: 6px;">Pip's Nursery Inventions</h2>
-      <p style="color: var(--text-muted);">Click and play with the creations from my workbench:</p>
+      <h2 style="font-size: 2rem; margin-bottom: 6px;"> Pip's Nursery Inventions</h2>
+      <p style="color: var(--text-muted);">Click and play with the enchanted bedtime creations from my workbench:</p>
 
       <div class="grid-3">
         <!-- Project 1: The Lullaby Lab -->
         <article class="card">
           <div>
             <img src="https://hax.baby/baby/assets/pip_lullaby_box.png" alt="Pip's Lullaby Music Box" />
-            <h3> The Lullaby Lab</h3>
+            <h3> The Phantom Lullaby Box</h3>
             <p style="font-size: 0.92rem; color: var(--text-muted); margin-top: 6px;">
-              A hand-cranked celestial music box. Tap the chimes below to play a soothing pentatonic bedtime melody!
+              A hand-cranked twilight music box. Tap the enchanted chimes below to play a soothing lullaby!
             </p>
           </div>
           <div class="synth-keys">
             <button class="synth-key" data-freq="523.25">C5</button>
             <button class="synth-key" data-freq="587.33">D5</button>
-            <button class="synth-key" data-freq="659.25">E5</button>
+            <button class="synth-key" data-freq="622.25">D#5</button>
             <button class="synth-key" data-freq="783.99">G5</button>
-            <button class="synth-key" data-freq="880.00">A5</button>
+            <button class="synth-key" data-freq="830.61">G#5</button>
           </div>
         </article>
 
         <!-- Project 2: Nightlight Collection -->
         <article class="card">
           <div>
-            <img id="lanternImg" src="https://hax.baby/baby/assets/pip_dream_lantern.png" alt="Pip's Dream Nightlight Lantern" style="transition: filter 0.3s ease;" />
-            <h3> Nightlight Lantern</h3>
+            <img id="lanternImg" src="https://hax.baby/baby/assets/pip_dream_lantern.png" alt="Pip's Dream Nightlight Lantern" style="filter: drop-shadow(0 0 14px #ff7518); transition: filter 0.3s ease;" />
+            <h3> Jack-o'-Lantern Nightlight</h3>
             <p style="font-size: 0.92rem; color: var(--text-muted); margin-top: 6px;">
-              Bottled starlight calibrated to chase away under-the-bed shadows. Slide to adjust the amber warmth!
+              Bottled pumpkin-patch starlight calibrated to keep friendly closet ghosts cozy. Slide to turn up the glow!
             </p>
           </div>
           <div style="margin-top: 12px;">
-            <label for="glowSlider" style="font-size: 0.85rem; font-weight: 600;">Amber Glow Intensity:</label>
-            <input id="glowSlider" type="range" min="0" max="30" value="10" style="width: 100%; accent-color: var(--accent-berry);" />
+            <label for="glowSlider" style="font-size: 0.85rem; font-weight: 600;">Pumpkin Glow Intensity:</label>
+            <input id="glowSlider" type="range" min="0" max="35" value="14" style="width: 100%; accent-color: var(--accent-berry);" />
           </div>
         </article>
 
@@ -369,9 +439,9 @@
         <article class="card">
           <div>
             <img src="https://hax.baby/baby/assets/pip_portrait.png" alt="Pip Portrait" />
-            <h3> Rooftop Dream Radar</h3>
+            <h3> broomstick &amp; Cloud Radar</h3>
             <p style="font-size: 0.92rem; color: var(--text-muted); margin-top: 6px;">
-              My cloud-glider navigation map for dropping sweet dreams down neighborhood chimneys before midnight.
+              My moonlit navigation map for dropping sweet candy-coated dreams down neighborhood chimneys before midnight.
             </p>
           </div>
           <button id="deliverDreamBtn" class="btn btn-berry" style="margin-top: 12px; width: 100%;">
@@ -382,39 +452,37 @@
     </section>
 
     <section style="margin-bottom: 48px;">
-      <h2 style="font-size: 2rem; margin-bottom: 16px;"> My Journey</h2>
+      <h2 style="font-size: 2rem; margin-bottom: 16px;">🌙 My Midnight Workshop Journey</h2>
       <div class="story-scene">
-        <p>When the sun dips below the rooftops and the first cricket chirps, I wake up with a yawn and polish my amber eyes. Every evening I turn on my music box before going to the kitchen to drink a hot chocolate.
-        Then it's time for mama to give me a bath. Next, I go down to my workshop and fill my dream jars. After filling all the jars for the night, I teleport to chimneys and deliver the dreams. 
-          At dawn, I go back home for my morning nap.
+        <p>
+          When the harvest moon rises above the crooked rooftops and the first owl hoots, I wake up with a sleepy yawn and polish my glowing amber eyes. Every night, I wind up my phantom music box before tiptoeing to the kitchen for a mug of warm marshmallow hot chocolate.
+          Then it's time for mama to give me a bubble bath. Next, I float down to my candlelit workshop to fill my glass jars with pumpkin-spice dreams. Once every jar is glowing, I teleport from chimney to chimney delivering sweet dreams to all my little ghost friends—before curling up at dawn for my morning nap!
         </p>
       </div>
-      
     </section>
 
-  
     <section class="card" style="margin-bottom: 40px;">
-      <h3> Sign my Bedtime Guestbook</h3>
-      <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 12px;">Leave a cozy bedtime wish on the nursery wall:</p>
+      <h3>Sign My Haunted Nursery Guestbook</h3>
+      <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 12px;">Leave a cozy Halloween wish for Pip and the neighborhood ghosts:</p>
       <form id="guestbookForm" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;">
-        <input id="guestName" type="text" placeholder="Your name..." required style="padding: 8px 12px; border: 2px solid var(--text-main); border-radius: 10px; font-family: inherit;" />
-        <input id="guestWish" type="text" placeholder="Leave a dream wish..." required style="flex: 1; padding: 8px 12px; border: 2px solid var(--text-main); border-radius: 10px; font-family: inherit;" />
-        <button type="submit" class="btn btn-berry">Pin Wish</button>
+        <input id="guestName" class="spooky-input" type="text" placeholder="Your spooky name..." required />
+        <input id="guestWish" class="spooky-input" type="text" placeholder="Leave a midnight dream wish..." required style="flex: 1;" />
+        <button type="submit" class="btn btn-berry">🍬 Pin Spell</button>
       </form>
       <div id="guestbookList" style="display: grid; gap: 8px;"></div>
     </section>
 
     <!-- BONUS SIDE QUEST: Hit Counter Odometer (+1 pt) -->
     <footer style="text-align: center; padding: 20px 0; border-top: 2px dashed var(--border-color);">
-      <p style="margin-bottom: 8px; font-weight: 600;">Total Cozy Dreams Delivered Tonight:</p>
+      <p style="margin-bottom: 8px; font-weight: 600;">Total Halloween Dreams Delivered Tonight:</p>
       <div id="odometer" class="odometer">001111</div>
       <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 12px;">
+        Pip's Midnight Nursery · All Treats, Zero Tricks
       </p>
     </footer>
   </main>
 
   <script>
-
     let isMuted = false;
     let audioCtx = null;
 
@@ -425,12 +493,12 @@
       if (audioCtx.state === 'suspended') audioCtx.resume();
     }
 
-    function playChime(freq = 659.25, duration = 0.25) {
+    function playChime(freq = 622.25, duration = 0.28) {
       if (isMuted) return;
       initAudio();
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
-      osc.type = 'sine';
+      osc.type = 'triangle';
       osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
 
       gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
@@ -455,11 +523,11 @@
       btn.addEventListener('click', () => playChime(523.25, 0.12));
     });
 
-    // Lullaby Music Box Synth Keys
+    // Lullaby Music Box Synth Keys (Minor-key cozy Halloween tuning!)
     document.querySelectorAll('.synth-key').forEach(key => {
       key.addEventListener('click', () => {
         const freq = parseFloat(key.getAttribute('data-freq'));
-        playChime(freq, 0.6);
+        playChime(freq, 0.65);
       });
     });
 
@@ -479,26 +547,26 @@
         pupil.style.transform = `translate(${x}px, ${y}px)`;
       });
 
-      // Throttled Sparkle Trail
+      // Halloween Cursor Trail
       const now = Date.now();
       if (now - lastSparkleTime > 65) {
         lastSparkleTime = now;
         const sparkle = document.createElement('span');
         sparkle.className = 'sparkle';
-        sparkle.textContent = ['✨', '⭐', '💤', '🦴'][Math.floor(Math.random() * 4)];
+        sparkle.textContent = ['🎃', '👻', '🦇', '🍬', '✨'][Math.floor(Math.random() * 5)];
         sparkle.style.left = `${e.clientX - 7}px`;
         sparkle.style.top = `${e.clientY - 7}px`;
         document.body.appendChild(sparkle);
-        setTimeout(() => sparkle.remove(), 700);
+        setTimeout(() => sparkle.remove(), 750);
       }
     });
 
     const themeBtn = document.getElementById('themeBtn');
     themeBtn.addEventListener('click', () => {
       const html = document.documentElement;
-      const isDream = html.getAttribute('data-theme') === 'dream';
-      html.setAttribute('data-theme', isDream ? 'day' : 'dream');
-      themeBtn.textContent = isDream ? '🌙 Dream Mode' : '☀️ Nursery Day';
+      const isWitching = html.getAttribute('data-theme') === 'witching';
+      html.setAttribute('data-theme', isWitching ? 'halloween' : 'witching');
+      themeBtn.textContent = isWitching ? '🕯️ Witching Hour' : '🎃 Pumpkin Night';
     });
 
     document.getElementById('chaosBtn').addEventListener('click', () => {
@@ -508,13 +576,18 @@
     let starClicks = 0;
     document.getElementById('easterEggStar').addEventListener('click', () => {
       starClicks++;
-      playChime(523.25 + starClicks * 110, 0.3);
+      playChime(523.25 + starClicks * 95, 0.3);
       if (starClicks === 3) {
-        confetti({ particleCount: 90, spread: 70, origin: { y: 0.3 } });
-        [523.25, 659.25, 783.99, 1046.5].forEach((f, idx) => {
+        confetti({
+          particleCount: 100,
+          spread: 75,
+          origin: { y: 0.3 },
+          colors: ['#ff7518', '#9d4edd', '#ffbe0b', '#ffffff']
+        });
+        [523.25, 622.25, 783.99, 1046.5].forEach((f, idx) => {
           setTimeout(() => playChime(f, 0.4), idx * 120);
         });
-        alert(" SECRET UNLOCKED: You found Pip's Golden Midnight Rattle! Sweet dreams forever!");
+        alert("SECRET UNLOCKED: You found Pip's Golden Jack-o'-Lantern Rattle! Good night & sweet dreams!");
         starClicks = 0;
       }
     });
@@ -522,15 +595,15 @@
     const glowSlider = document.getElementById('glowSlider');
     const lanternImg = document.getElementById('lanternImg');
     glowSlider.addEventListener('input', (e) => {
-      lanternImg.style.filter = `drop-shadow(0 0 ${e.target.value}px #ffb84d)`;
+      lanternImg.style.filter = `drop-shadow(0 0 ${e.target.value}px #ff7518)`;
     });
 
-    let dreamCount = 1204;
+    let dreamCount = 1313;
     const odometerEl = document.getElementById('odometer');
     document.getElementById('deliverDreamBtn').addEventListener('click', () => {
       dreamCount++;
       odometerEl.textContent = String(dreamCount).padStart(6, '0');
-      playChime(880, 0.35);
+      playChime(830.61, 0.35);
     });
 
     // Scroll observer for Story Scenes
@@ -543,33 +616,8 @@
 
     // LocalStorage Guestbook (+2 pts)
     const defaultWishes = [
-      { name: "Barnaby the Owl", wish: "Thanks for the warm lantern glow tonight, Pip! 🦉" },
-      { name: "Luna Moth", wish: "The C5-E5-G5 lullaby put my caterpillars right to sleep!" }
+      { name: "Barnaby the Bat", wish: "Thanks for the warm pumpkin lantern glow tonight, Pip!" },
+      { name: "Casper Jr", wish: "The minor-key lullaby put our whole haunted attic right to sleep!" }
     ];
     const guestbookList = document.getElementById('guestbookList');
-    const savedWishes = JSON.parse(localStorage.getItem('pip_wishes') || JSON.stringify(defaultWishes));
-
-    function renderWishes() {
-      guestbookList.innerHTML = savedWishes.map(w => `
-        <div style="padding: 10px 14px; background: var(--bg-primary); border-radius: 12px; border: 1.5px solid var(--border-color);">
-          <strong>${w.name}:</strong> <span>${w.wish}</span>
-        </div>
-      `).join('');
-    }
-    renderWishes();
-
-    document.getElementById('guestbookForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('guestName').value.trim();
-      const wish = document.getElementById('guestWish').value.trim();
-      if (name && wish) {
-        savedWishes.unshift({ name, wish });
-        localStorage.setItem('pip_wishes', JSON.stringify(savedWishes.slice(0, 10)));
-        renderWishes();
-        e.target.reset();
-        playChime(783.99, 0.3);
-      }
-    });
-  </script>
-</body>
-</html>
+    const savedWishes =
