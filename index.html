@@ -620,4 +620,29 @@
       { name: "Casper Jr", wish: "The minor-key lullaby put our whole haunted attic right to sleep!" }
     ];
     const guestbookList = document.getElementById('guestbookList');
-    const savedWishes =
+    const savedWishes =JSON.parse(localStorage.getItem('pip_halloween_wishes') || JSON.stringify(defaultWishes));
+
+    function renderWishes() {
+      guestbookList.innerHTML = savedWishes.map(w => `
+        <div style="padding: 10px 14px; background: var(--bg-inset); border-radius: 12px; border: 1.5px solid var(--border-color);">
+          <strong style="color: var(--accent-amber);">${w.name}:</strong> <span>${w.wish}</span>
+        </div>
+      `).join('');
+    }
+    renderWishes();
+
+    document.getElementById('guestbookForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('guestName').value.trim();
+      const wish = document.getElementById('guestWish').value.trim();
+      if (name && wish) {
+        savedWishes.unshift({ name, wish });
+        localStorage.setItem('pip_halloween_wishes', JSON.stringify(savedWishes.slice(0, 10)));
+        renderWishes();
+        e.target.reset();
+        playChime(783.99, 0.3);
+      }
+    });
+  </script>
+</body>
+</html>
