@@ -1,1 +1,1 @@
-Hax.Baby
+Hax.Baby Hackathon
